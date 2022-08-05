@@ -23,12 +23,12 @@ namespace OrdersApp.Controllers
         /// A form for adding a new order
         /// </summary>
         /// <returns></returns>
-        public IActionResult Index(OrderInsertInputModel order)
+        public IActionResult Order(OrderInsertInputModel order)
         {
             if (ModelState.IsValid)
             {
-                //var orderModel = _mapper.Map<OrderModel>(order);
-                //_orderService.AddOrder(orderModel);
+                var orderModel = _mapper.Map<OrderModel>(order);
+                _orderService.AddOrder(orderModel);
                 return RedirectToAction(_ordersUrl);
             }
             return View();
@@ -41,26 +41,7 @@ namespace OrdersApp.Controllers
         [HttpGet]
         public IActionResult Orders()
         {
-            var orders = new List<OrderModel>() {
-                new OrderModel {
-                Number = 23,
-                AddressOfRecipient = "Samara",
-                AddressOfSender = "Bugaga",
-                CityOfRecipient = "SPB",
-                CityOfSender = "Yoy",
-                CargoWeight = 35.6,
-                DepartureDate = new DateTime(2022, 4, 23, 15, 30, 00)
-                },
-                new OrderModel {
-                Number = 23,
-                AddressOfRecipient = "Samara",
-                AddressOfSender = "Bugaga",
-                CityOfRecipient = "SPB",
-                CityOfSender = "Yoy",
-                CargoWeight = 35.6,
-                DepartureDate = new DateTime(2022, 4, 23, 15, 30, 00)
-                }
-            };
+            var orders = _orderService.GetAllOrders();
             var outputs = _mapper.Map<List<OrderOutputModel>>(orders);
             return View(outputs);
         }

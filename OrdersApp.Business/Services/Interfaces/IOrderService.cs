@@ -4,7 +4,7 @@ namespace OrdersApp.Business.Services.Interfaces
 {
     public interface IOrderService
     {
-        int AddOrder(OrderModel orderModel);
+        void AddOrder(OrderModel orderModel);
         List<OrderModel> GetAllOrders();
     }
 }

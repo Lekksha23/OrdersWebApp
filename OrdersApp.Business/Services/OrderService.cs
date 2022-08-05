@@ -11,7 +11,7 @@ namespace OrdersApp.Business
         private readonly IMapper _mapper;
         private readonly IOrderRepository _orderRepository;
 
-        public OrderService(IOrderRepository orderRepository, IMapper mapper) // Add logger
+        public OrderService(IOrderRepository orderRepository, IMapper mapper)
         {
             _orderRepository = orderRepository;
             _mapper = mapper;
@@ -23,13 +23,10 @@ namespace OrdersApp.Business
             return _mapper.Map<List<OrderModel>>(entities);
         }
 
-        public int AddOrder(OrderModel orderModel)
+        public void AddOrder(OrderModel orderModel)
         {
             var order = _mapper.Map<Order>(orderModel);
-            var orderNumber = 23;
-            order.Number = orderNumber;
             _orderRepository.AddOrder(order);
-            return orderNumber;
         }
     }
 }

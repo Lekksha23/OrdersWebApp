@@ -2,7 +2,7 @@
 {
     public class OrderOutputModel
     {
-        public int Number { get; set; }
+        public int Id { get; set; }
         public string AddressOfSender { get; set; }
         public string CityOfSender { get; set; }
         public string AddressOfRecipient { get; set; }
