@@ -9,6 +9,7 @@ namespace OrdersApp.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.CreateOrderEntity();
             modelBuilder.Seed();
         }
 

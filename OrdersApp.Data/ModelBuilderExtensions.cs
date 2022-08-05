@@ -5,6 +5,11 @@ namespace OrdersApp.Data
 {
     internal static class ModelBuilderExtensions
     {
+        public static void CreateOrderEntity(this ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Order>().HasIndex(o => o.Number).IsUnique();
+        }
+
         public static void Seed(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Order>().HasData(
@@ -32,7 +37,7 @@ namespace OrdersApp.Data
                 {
                     Number = 3,
                     CityOfSender = "Санкт-Петербург",
-                    AddressOfSender = "ул Ломоносова, д 39", 
+                    AddressOfSender = "ул Ломоносова, д 39",
                     CityOfRecipient = "Челябинск",
                     AddressOfRecipient = "ул. Пушкина, д 23, кв 24",
                     CargoWeight = 60.7,

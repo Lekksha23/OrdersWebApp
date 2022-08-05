@@ -1,7 +1,21 @@
+using OrdersApp.Data;
+using OrdersApp.Infrastructurers;
+using Microsoft.EntityFrameworkCore;
+using OrdersApp.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
+
+string _connectionStringVariableName = "ORDERS_APP";
+string connString = builder.Configuration.GetValue<string>(_connectionStringVariableName);
+
+builder.Services.AddDbContext<OrdersAppContext>(opt
+    => opt.UseSqlServer(connString));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.RegisterOrdersAppServices();
+builder.Services.RegisterOrdersAppRepositories();
+builder.Services.RegisterOrdersAppAutomappers();
 
 var app = builder.Build();
 
@@ -18,8 +32,13 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.MapControllerRoute(
+app.UseMiddleware<GlobalExceptionHandler>();
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+});
 
 app.Run();

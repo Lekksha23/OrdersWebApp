@@ -1,0 +1,36 @@
+﻿@model OrderInsertInputModel
+
+<form asp-action="Index" asp-controller="Event">
+    <div class="mb-3">
+        <label for="AddressOfSender" class="form-label">Адрес отправителя</label>
+        @Html.EditorFor(x => x.AddressOfSender)
+        @Html.ValidationMessageFor(x => x.AddressOfSender)
+    </div>
+    <div class="mb-3">
+        <label for="CityOfSender" class="form-label">Город отправителя</label>
+        @Html.EditorFor(x => x.CityOfSender)
+        @Html.ValidationMessageFor(x => x.CityOfSender)
+    </div>
+    <div class="mb-3">
+        <label for="AddressOfRecipient" class="form-label">Адрес получателя</label>
+        @Html.EditorFor(x => x.AddressOfRecipient)
+        @Html.ValidationMessageFor(x => x.AddressOfRecipient)
+    </div>
+    <div class="mb-3">
+        <label for="CityOfRecipient" class="form-label">Город получателя</label>
+        @Html.EditorFor(x => x.CityOfRecipient)
+        @Html.ValidationMessageFor(x => x.CityOfRecipient)
+    </div>
+    <div class="mb-3">
+        <label for="CargoWeight" class="form-label">Вес груза</label>
+        @Html.EditorFor(x => x.CargoWeight)
+        @Html.ValidationMessageFor(x => x.CargoWeight)
+    </div>
+    <div class="mb-3">
+        <label for="DepartureDate" class="form-label">Дата отправки груза</label>
+        @Html.EditorFor(x => x.DepartureDate)
+        @Html.ValidationMessageFor(x => x.DepartureDate)
+    </div>
+
+    <button type="submit">Добавить заказ</button>
+</form>

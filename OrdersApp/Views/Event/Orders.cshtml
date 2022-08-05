@@ -1,0 +1,27 @@
+﻿@model List<OrderOutputModel>
+
+<table class="table table-striped">
+    <tr>
+        <th>№ заказа</th>
+        <th>Адрес отправителя</th>
+        <th>Город отправителя</th>
+        <th>Адрес получателя</th>
+        <th>Город получателя</th>
+        <th>Вес груза</th>
+        <th>Дата отправки</th>
+    </tr>
+    @foreach (OrderOutputModel item in Model)
+    {
+        <tr>
+            <td>@item.Number</td>
+            <td>@item.AddressOfSender</td>
+            <td>@item.CityOfSender<td>
+            <td>@item.AddressOfRecipient</td>
+            <td>@item.CityOfRecipient</td>
+            <td>@item.CargoWeight</td>
+            <td>@item.DepartureDate</td>
+        </tr>
+    }
+</table>
+
+
