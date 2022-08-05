@@ -19,10 +19,15 @@ namespace OrdersApp.Controllers
             _mapper = mapper;
         }
 
-        /// <summary>
-        /// A form for adding a new order
-        /// </summary>
-        /// <returns></returns>
+        // Screen for adding an order
+        [HttpGet]
+        public IActionResult Order()
+        {
+            return View();
+        }
+
+        // Screen for adding an order
+        [HttpPost]
         public IActionResult Order(OrderInsertInputModel order)
         {
             if (ModelState.IsValid)
@@ -34,10 +39,7 @@ namespace OrdersApp.Controllers
             return View();
         }
 
-        /// <summary>
-        /// A form with all orders
-        /// </summary>
-        /// <returns></returns>
+        // Get all orders
         [HttpGet]
         public IActionResult Orders()
         {

@@ -4,23 +4,27 @@ namespace OrdersApp.Models
 {
     public class OrderInsertInputModel
     {
-        [Required(ErrorMessage = "Введите город отправителя")]
+        [Required(ErrorMessage ="Пожалуйста, введите название города")]
+        [MaxLength(50, ErrorMessage="Такого города не существует")]
         public string CityOfSender { get; set; }
 
-        [Required(ErrorMessage = "Введите адрес отправителя")]
+        [Required(ErrorMessage = "Пожалуйста, введите адрес отправителя")]
+        [MaxLength(100, ErrorMessage = "Введите правильный адрес")]
         public string AddressOfSender { get; set; }
 
-        [Required(ErrorMessage = "Введите город получателя")]
+        [Required(ErrorMessage = "Пожалуйста, введите название города")]
+        [MaxLength(50, ErrorMessage = "Такого города не существует")]
         public string CityOfRecipient { get; set; }
 
-        [Required(ErrorMessage = "Введите адрес получателя")]
+        [Required(ErrorMessage = "Пожалуйста, введите адрес получателя")]
+        [MaxLength(100, ErrorMessage = "Введите правильный адрес")]
         public string AddressOfRecipient { get; set; }
 
-        [Required(ErrorMessage = "Введите значение веса")]
-        [Range(1, 80, ErrorMessage="Введите вес от 1 до 80 кг")]
+        [Required(ErrorMessage = "Пожалуйста, введите вес груза")]
+        [Range(0.1, 100, ErrorMessage="Введите вес от 0.1 до 100 кг")]
         public double CargoWeight { get; set; }
 
-        [Required(ErrorMessage = "Укажите дату отправки")]
+        [Required(ErrorMessage = "Пожалуйста, заполните дату")]
         public DateTime DepartureDate { get; set; }
     }
 }
